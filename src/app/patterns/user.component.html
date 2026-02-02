@@ -1,0 +1,9 @@
+
+<h1>Välkommen {{currentUser?.username}}!</h1>
+
+@for (pattern of patterns(); track pattern.id) {
+<div>
+  <img src="{{pattern.first_photo.square_url}}" />
+  <p>{{pattern.title}}</p>
+</div>
+}

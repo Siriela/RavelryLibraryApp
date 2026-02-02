@@ -1,0 +1,16 @@
+
+  @if (isFetching() && !error()) {
+  <p class="fallback-text">Fetching user...</p>
+  }
+
+  @if (error()) {
+  <p class="fallback-text">{{ error() }}</p>
+  }
+
+  @if (currentUser()) {
+    
+  <app-user [currentUser]="currentUser()"/>
+  } @else if (!currentUser()) {
+  <p class="fallback-text">Unfortunately, no user could be found.</p>
+  }
+
