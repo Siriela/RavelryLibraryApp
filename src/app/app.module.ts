@@ -16,6 +16,7 @@ import { ModalComponent } from './shared/modal/modal.component';
 import { ErrorModalComponent } from './shared/modal/error-modal/error-modal.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { PatternViewComponent } from './patterns/pattern-view.component';
 
 function loggingInterceptor(
   request: HttpRequest<unknown>,
@@ -45,7 +46,8 @@ function loggingInterceptor(
     UserComponent,
     UserIntroComponent,
     ModalComponent,
-    ErrorModalComponent
+    ErrorModalComponent,
+    PatternViewComponent
   ],
   imports: [BrowserModule, FormsModule, RouterModule.forRoot([])],
   providers: [provideHttpClient(withInterceptors([loggingInterceptor]))],

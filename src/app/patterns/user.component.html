@@ -1,9 +1,21 @@
-
-<h1>Välkommen {{currentUser?.username}}!</h1>
-
 @for (pattern of patterns(); track pattern.id) {
 <div>
   <img src="{{pattern.first_photo.square_url}}" />
   <p>{{pattern.title}}</p>
+  <button aria-haspopup="dialog" (click)="onClick($event)">Öppna köttbullar</button>
 </div>
 }
+    
+    
+<dialog id="meatballs" open="{{openMeatballsMenu ? true : null}}">
+  <h1>Köttbullar!!!</h1>
+<button (click)="showPattern($event)">Visa</button>
+<button (click)="editPattern($event)">Ändra</button>
+<button (click)="deletePattern($event)">Ta bort</button>
+
+</dialog>
+
+<dialog id="viewDialog" modal="true" open="{{openViewModal ? true : null}}">
+      <h1>Modal!!!</h1>
+      <!-- <app-pattern-view [pattern]="selectedPattern"/> -->
+    </dialog>

@@ -1,20 +1,21 @@
-@if (error()) {
+<!-- @if (error()) {
   <app-error-modal title="An error occurred!" [message]="error()" />
-}
+} -->
 
 <header>
-  <h1>Testar lite Ravelry-API</h1>
-  <p>
-    Create your personal collection of places you would like to visit or you
-    have visited.
-    <a href="https://www.ravelry.com/oauth2/auth?client_id={{clientId}}&client_secret={{clientSecret}}&redirect_uri={{redirectUrl}}&state=whydoineedthis&response_type=token&scope=offline">jkhll</a>
-  </p>
+  <h1>Köa dina projekt!</h1>
 </header>
 
 <main>
   {{saveToken()}}
-  <app-user-intro />
+    @if (currentUser().username) {
+      <h2>Välkommen {{currentUser().username}}!</h2>
+    }
+    @else {
+      <a href="{{authLink}}">Logga in med ditt Ravelry-konto</a>
+      eller <a href="https://www.ravelry.com/invitations">Skapa ett Ravelry-konto</a>
+    }
 
- 
+  <p>Låt dina köade stick- och virkideer lämna hjärnan och ta plats här, med direktkoppling till ditt Ravelry-bibliotek.</p>
+  <app-user-intro />
 </main>
-<!-- https://www.ravelry.com/oauth2/auth?client_id=358cb5e247f0f68ce9ba43c269763b7d&redirect_uri=https://angular-https.local:4200/&state=lotsofsheep&response_type=token&scope=offline" -->

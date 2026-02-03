@@ -11,10 +11,32 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserComponent {
   @Input() currentUser?: User;
+  openViewModal = false;
+  openMeatballsMenu = false;
+  selectedPattern?: Pattern;
+
+  onClick(e: Event) {
+   this.openMeatballsMenu = true;
+  }
+  // https://api.ravelry.com/patterns.json?ids=601
+  showPattern(e: Event) {
+    this.selectedPattern 
+    this.openViewModal = true;
+  }
+
+  editPattern(e: Event) {
+
+  }
+
+  deletePattern(e: Event) {
+
+  }
+
   private service = inject(Service);
 
   private destroyRef = inject(DestroyRef);
-     get patterns() {
+     
+  get patterns() {
      return this.service.patterns;
   }
 
@@ -22,7 +44,7 @@ export class UserComponent {
   error = signal('');
   ngOnInit() {
     this.isFetching.set(true);
-    const subscription2 = this.service.loadPatterns().subscribe({
+    const subscription1 = this.service.loadPatterns().subscribe({
       error: (error: Error) => {
         this.error.set(error.message);
       },
@@ -32,7 +54,7 @@ export class UserComponent {
     });
 
     this.destroyRef.onDestroy(() => {
-      subscription2.unsubscribe();
+      subscription1.unsubscribe();
     });
   }
 }
